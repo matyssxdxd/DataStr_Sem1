@@ -123,4 +123,33 @@ public class MyArrayList {
         return neighbours;
     }
 
+    public void print() throws Exception {
+        if (isEmpty()) throw new Exception("No elemento");
+
+        for (int element : list) {
+            System.out.print(element + " ");
+        }
+    }
+
+    public void makeEmpty() {
+        size = LIST_DEFAULT_SIZE;
+        counter = 0;
+        list = new int[size];
+        System.gc();
+    }
+
+    public void sort() throws Exception {
+        if (isEmpty()) throw new Exception("No elemento");
+
+        for (int i = 0; i < counter - 1; i++) {
+            for (int j = 0; j < counter - i - 1; j++) {
+                if (list[j] > list[j + 1]) {
+                    int temp = list[j];
+                    list[j] = list[j + 1];
+                    list[j + 1] = temp;
+                }
+            }
+        }
+    }
+
 }
