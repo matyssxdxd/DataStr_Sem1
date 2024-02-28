@@ -1,5 +1,7 @@
 package datastr;
 
+import java.util.ArrayList;
+
 public class MyArrayList {
 
     private int[] list;
@@ -87,5 +89,38 @@ public class MyArrayList {
         return list[index];
     }
 
+    public ArrayList<Integer> find(int element) throws Exception {
+        if (isEmpty()) throw new Exception("List empty bro");
+
+        ArrayList<Integer> indexes = new ArrayList<Integer>();
+
+        for (int i = 0; i < counter; i++) {
+            if (list[i] == element) {
+                indexes.add(i);
+            }
+        }
+
+        if (indexes.isEmpty()) throw  new Exception("No elemento");
+
+        return indexes;
+    }
+
+    public int[] findNext(int element) throws Exception {
+        ArrayList<Integer> indexes = find(element);
+
+        int neighbourSize = indexes.size();
+
+        if (indexes.get(neighbourSize - 1) == counter - 1) {
+            neighbourSize--;
+        }
+
+        int[] neighbours = new int[neighbourSize];
+
+        for (int i = 0; i < neighbourSize; i++) {
+            neighbours[i] = list[indexes.get(i) + 1];
+        }
+
+        return neighbours;
+    }
 
 }
