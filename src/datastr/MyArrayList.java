@@ -30,4 +30,18 @@ public class MyArrayList {
     public int howManyElements() {
         return counter;
     }
+
+    private void resize() {
+        int newSize = (this.counter > 100) ? (int)(this.size * 1.5) : this.size * 2;
+
+        int[] listNew = new int [newSize];
+
+        System.arraycopy(this.list, 0, listNew, 0, this.counter);
+
+        this.list = listNew;
+
+        System.gc();
+
+        this.size = newSize;
+    }
 }
