@@ -55,11 +55,37 @@ public class MyArrayList {
         if (index < 0 || index > counter) throw new Exception("Index problemo");
         if (isFull()) resize();
 
-        for (int i = counter; i > index; i--) {
-            list[i] = list[i-1];
+        if (index == counter) add(element);
+        else {
+            for (int i = counter; i > index; i--) {
+                list[i] = list[i-1];
+            }
+
+            list[index] = element;
+            counter++;
         }
 
-        list[index] = element;
-        counter++;
     }
+
+    public void remove(int index) throws Exception {
+        if (isEmpty()) throw new Exception("List empty bro");
+        if (index < 0 || index >= counter) throw new Exception("Index problemo");
+
+        for (int i = index; i < counter - 1; i++) {
+            list[i] = list[i + 1];
+        }
+
+        list[counter - 1] = 0;
+        counter--;
+    }
+
+    // TODO: Change return type dynamically
+    public int at(int index) throws Exception {
+        if (isEmpty()) throw new Exception("List empty bro");
+        if (index < 0 || index >= counter) throw new Exception("Index problemo");
+
+        return list[index];
+    }
+
+
 }
