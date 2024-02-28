@@ -129,6 +129,7 @@ public class MyArrayList {
         for (int element : list) {
             System.out.print(element + " ");
         }
+        System.out.println();
     }
 
     public void makeEmpty() {
