@@ -8,15 +8,15 @@ public class MyArrayList {
     private int counter = 0;
 
     public MyArrayList() {
-        list = new int[this.size];
+        list = new int[size];
     }
 
-    public MyArrayList(int size) {
-        if (size > 0) {
-            this.size = size;
+    public MyArrayList(int inputSize) {
+        if (inputSize > 0) {
+            size = inputSize;
         }
 
-        list = new int[this.size];
+        list = new int[size];
     }
 
     public boolean isEmpty() {
@@ -32,16 +32,34 @@ public class MyArrayList {
     }
 
     private void resize() {
-        int newSize = (this.counter > 100) ? (int)(this.size * 1.5) : this.size * 2;
+        int newSize = (counter > 100) ? (int)(size * 1.5) : size * 2;
 
         int[] listNew = new int [newSize];
 
-        System.arraycopy(this.list, 0, listNew, 0, this.counter);
+        System.arraycopy(list, 0, listNew, 0, counter);
 
-        this.list = listNew;
+        list = listNew;
 
         System.gc();
 
-        this.size = newSize;
+        size = newSize;
+    }
+
+    public void add(int element) {
+        if (isFull()) resize();
+        list[counter] = element;
+        counter++;
+    }
+
+    public void add(int element, int index) throws Exception {
+        if (index < 0 || index > counter) throw new Exception("Index problemo");
+        if (isFull()) resize();
+
+        for (int i = counter; i > index; i--) {
+            list[i] = list[i-1];
+        }
+
+        list[index] = element;
+        counter++;
     }
 }
