@@ -127,7 +127,7 @@ public class MyArrayList<T> {
         if (isEmpty()) throw new Exception("No elemento");
 
         for (T element : list) {
-            System.out.print(element + " ");
+            if (element != null) System.out.print(element + " ");
         }
         System.out.println();
     }

@@ -1,6 +1,6 @@
 package model;
 
-public class Student {
+public class Student implements Comparable<Student> {
     private long st_ID;
     private String name;
     private String surname;
@@ -49,5 +49,14 @@ public class Student {
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Student o) {
+        if (surname.charAt(0) < o.getSurname().charAt(0)) return 1;
+
+        else if (surname.charAt(0) > o.getSurname().charAt(0)) return -1;
+
+        return 0;
     }
 }
