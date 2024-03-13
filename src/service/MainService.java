@@ -1,12 +1,31 @@
 package service;
 
 import datastr.MyArrayList;
+import model.Student;
 
 import java.util.Arrays;
 
 public class MainService {
 
     public static void main(String[] args) {
+
+        MyArrayList<Student> studList = new MyArrayList<>(3);
+
+        studList.add(new Student("Jeska", "Konosx"));
+        studList.add(new Student("Daniels", "Kalmars"));
+        studList.add(new Student("Rudolfs", "Sniedzins"));
+
+        try {
+            studList.print();
+            studList.add(new Student("Janka", "Banka"), 1);
+            studList.print();
+            studList.remove(0);
+            studList.print();
+            studList.sort();
+            studList.print();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
 
         MyArrayList myList = new MyArrayList(3);
 
